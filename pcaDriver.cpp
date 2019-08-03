@@ -7,11 +7,17 @@ using namespace arma;
 using namespace SBSSON002;
 
 int main(){
-  double** array = subtractMean(readFromFile("myData.csv"));
+  /*double** array = subtractMean(readFromFile("myData.csv"));
   mat x = createMatrix(array, 0);
   mat y = createMatrix(array, 1);
 
+  mat covariance = cov(y, y);*/
+  Pca pca;
+  pca.readFromFile("myData.csv");
+  mat x = pca.createMatrix(0);
+  mat y = pca.createMatrix(1);
   mat covariance = cov(y, y);
-  cout << covariance << endl;
+  
+  cout << "Working, yay! >> " << covariance << endl;
   return 0;
 }
