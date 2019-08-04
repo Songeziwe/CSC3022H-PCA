@@ -24,18 +24,19 @@ int main(){
   cov_matrix << x_variance(0,0) << xy_variance(0,0) << endr
              << xy_variance(0,0) << y_variance(0,0) << endr;
 
-  cout << "\nCovariance matrix:" << endl;
-  cout << cov_matrix << endl;
-
   cx_vec eigval;
   cx_mat eigvec;
 
   eig_gen(eigval, eigvec, cov_matrix);
 
-  cout << "\nEigenvactors:" << endl
-       << eigvec << endl
+  cout << "\nCovariance matrix:" << endl;
+  
+  cout << "\nCovariance matrix:" << endl
+       << cov_matrix << endl 
        << "Eigenvalues:" << endl
-       << eigval << endl; 
+       << eigval << endl
+       << "Eigenvectors:" << endl
+       << eigvec << endl; 
 
   return 0;
 }
