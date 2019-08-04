@@ -37,20 +37,27 @@ int main(){
   double x_proportion = cov_matrix(0,0) / totalVariance;
   double y_proportion = cov_matrix(1,1) / totalVariance;
 
-  // Print out the result 
-  cout << "\nCovariance matrix:" << endl
-       << cov_matrix << endl 
-       << "Eigenvalues:" << endl
-       << eigval << endl
-       << "Eigenvectors:" << endl
-       << eigvec << endl
-       << "Total variance:" << endl 
-       << " " << totalVariance << endl
-       << "\nProportion for principal component 1: " << endl
-       << " " << x_proportion << endl
-       << "\nProportion for principal component 2: " << endl
-       << " " << y_proportion << "\n"<< endl; 
-  
+  // write results to a file.
+  ofstream file;
+  file.open("./Data/answers.txt");
+  if(file.is_open()){
+    file << "Eigenvalues:" << endl
+         << eigval << endl
+         << "Eigenvectors:" << endl
+         << eigvec << endl
+         << "Covariance matrix:" << endl
+         << cov_matrix << endl 
+         << "Total variance:" << endl 
+         << " " << totalVariance << endl
+         << "\nProportion for principal component 1: " << endl
+         << " " << x_proportion << endl
+         << "\nProportion for principal component 2: " << endl
+         << " " << y_proportion << endl;
+    cout << "Wrote answers to ./Data/answers.txt" << endl;
+    file.close();
+  }else{
+    cout << "Unable to open file." << endl;
+  }
 
   return 0;
 }
