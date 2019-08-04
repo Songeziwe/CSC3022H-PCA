@@ -54,7 +54,6 @@ namespace SBSSON002 {
         }
         return *this;
     }
-    // need to clear memory to prevent data leaks
 
     void Pca::init_array(){
         // create 64 by 2 array
@@ -62,6 +61,7 @@ namespace SBSSON002 {
            data_array_ptr[i] = new double[columns]; 
         }
     }
+
     void Pca::readFromFile(string filename){
         ifstream file;
         string line;
@@ -99,6 +99,7 @@ namespace SBSSON002 {
         }
         xmean /= 64;
         ymean /= 64;
+        
         means[0] = xmean;
         means[1] = ymean;
 
@@ -106,26 +107,24 @@ namespace SBSSON002 {
     }
 
     // subtract the mean from each data point
-    double** Pca::subtractMean(){
+    void Pca::subtractMean(){
         double* means = meanForEachDimension();
         int col_pos = 0;
         for(int i = 0; i < 64; ++i){
             data_array_ptr[i][col_pos] -= means[0];     // x dimension
             data_array_ptr[i][col_pos + 1] -= means[1]; // y dimension
         }
-        return data_array_ptr;
     }
 
-    // create a matrix
+    // create a matrix from updated data
     mat Pca::createMatrix(int dimension){
+        //subtractMean();
         mat matrix(64, 1); // 64 rows, 1 column
 
         for(int i = 0; i < 64; ++i){
             matrix(i, 0) = data_array_ptr[i][dimension];
             //matrix(i, 1) = data_ptr[i][1];    
         }
-
-        // deallocate memory
         
         return matrix;
     }

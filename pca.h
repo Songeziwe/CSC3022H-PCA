@@ -28,7 +28,7 @@ namespace SBSSON002 {
         void init_array();
         void readFromFile(std::string filename);
         double* meanForEachDimension();
-        double** subtractMean();
+        void subtractMean();
         arma::mat createMatrix(int dimension);
     };
 }
