@@ -34,7 +34,7 @@ int main(){
 
   cout << "\nEigenvactors:" << endl
        << eigvec << endl
-       << "\nEigenvalues:" << endl
+       << "Eigenvalues:" << endl
        << eigval << endl; 
 
   return 0;

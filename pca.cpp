@@ -118,12 +118,10 @@ namespace SBSSON002 {
 
     // create a matrix from updated data
     mat Pca::createMatrix(int dimension){
-        //subtractMean();
         mat matrix(64, 1); // 64 rows, 1 column
 
         for(int i = 0; i < 64; ++i){
-            matrix(i, 0) = data_array_ptr[i][dimension];
-            //matrix(i, 1) = data_ptr[i][1];    
+            matrix(i, 0) = data_array_ptr[i][dimension];   
         }
         
         return matrix;
