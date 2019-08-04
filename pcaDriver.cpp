@@ -27,5 +27,15 @@ int main(){
   cout << "\nCovariance matrix:" << endl;
   cout << cov_matrix << endl;
 
+  cx_vec eigval;
+  cx_mat eigvec;
+
+  eig_gen(eigval, eigvec, cov_matrix);
+
+  cout << "\nEigenvactors:" << endl
+       << eigvec << endl
+       << "\nEigenvalues:" << endl
+       << eigval << endl; 
+
   return 0;
 }
