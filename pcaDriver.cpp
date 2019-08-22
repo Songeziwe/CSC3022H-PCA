@@ -15,7 +15,7 @@ int main(){
   pca.readFromFile("myData.csv");
   mat x = pca.createMatrix(0);
   mat y = pca.createMatrix(1);
-  
+
   pca.subtractMean();
 
   mat x_variance = cov(x, x);
@@ -32,7 +32,7 @@ int main(){
   // Calculate Eigenvalues and Eigenvectors
   eig_gen(eigval, eigvec, cov_matrix);
   double totalVariance = cov_matrix(0,0) + cov_matrix(1,1) + 2 * cov_matrix(0,1);
-  
+
   // Calculate proportion for component 1 and 2
   double x_proportion = cov_matrix(0,0) / totalVariance;
   double y_proportion = cov_matrix(1,1) / totalVariance;
@@ -46,15 +46,15 @@ int main(){
          << "Eigenvectors:" << endl
          << eigvec << endl
          << "Covariance matrix:" << endl
-         << cov_matrix << endl 
-         << "Total variance:" << endl 
+         << cov_matrix << endl
+         << "Total variance:" << endl
          << " " << totalVariance << endl
          << "\nProportion for principal component 1: " << endl
          << " " << x_proportion << endl
          << "\nProportion for principal component 2: " << endl
          << " " << y_proportion << endl;
-    cout << "Wrote answers to ./Data/answers.txt" << endl;
     file.close();
+    cout << "Wrote answers to ./Data/answers.txt" << endl;
   }else{
     cout << "Unable to open file." << endl;
   }
